@@ -78,7 +78,7 @@ const Home = () => {
           </label>
         </div>
         <button>
-          <BsSearch />
+          <BsSearch style={{ width: "100%", height: "100%" }} />
         </button>
       </div>
       <div className={cl.homeProducts}>

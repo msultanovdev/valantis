@@ -58,7 +58,7 @@
   }
 }
 @media screen and (max-width: 576px) {
-  .cardWrapper {
+  .card {
     width: 100%;
   }
 }

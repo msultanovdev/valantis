@@ -17,7 +17,7 @@
 }
 .spinner {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
   top: 0;
@@ -48,22 +48,18 @@
   transition: all 0.3s;
 }
 
-.homePagination button:hover {
-  border-radius: 50%;
-  background-color: rgb(229, 229, 229);
-}
 .homeSearch button {
   padding: 0.5rem;
   cursor: pointer;
   border-radius: 10px;
+  width: 40px;
+  height: 40px;
   border: none;
   background-color: transparent;
   margin-left: 0.5rem;
   transition: all 0.3s;
 }
-.homeSearch button:hover {
-  background-color: rgb(229, 229, 229);
-}
+
 .form__group {
   position: relative;
   padding: 15px 0 0;
@@ -136,9 +132,24 @@
 }
 @media screen and (max-width: 576px) {
   .cardWrapper {
-    width: 100%;
+    width: 98%;
   }
   .form__group {
-    width: 50%;
+    width: 90%;
+  }
+  .homeProducts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (hover: hover) {
+  .homeSearch button:hover {
+    background-color: rgb(229, 229, 229);
+  }
+  .homePagination button:hover {
+    border-radius: 50%;
+    background-color: rgb(229, 229, 229);
   }
 }
