@@ -1,0 +1,51 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0.9rem;
+  box-shadow: rgba(146, 146, 161, 0.2) 0px 7px 29px 0px;
+  border-radius: 16px;
+  width: 300px;
+  height: 300px;
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+.card:hover {
+  opacity: 1;
+  scale: 1.04;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.cardHeader {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+.cardBody {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.cardBody p {
+  margin-bottom: 0.3rem;
+}
+.cardBody span {
+  color: rgb(171, 171, 171);
+}
+.cardFooter {
+  margin: auto 0 0 auto;
+}
+.cardFooter button {
+  padding: 0.3rem;
+  margin-left: 0.5rem;
+  border: 1px solid rgb(156, 156, 156);
+  background-color: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.cardFooter button:hover {
+  border: 1px solid rgb(92, 92, 92);
+  background-color: rgb(229, 229, 229);
+}
