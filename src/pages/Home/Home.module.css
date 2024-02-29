@@ -135,7 +135,10 @@
   }
 }
 @media screen and (max-width: 576px) {
-  .homeProducts {
-    width: 200px;
+  .cardWrapper {
+    width: 100%;
+  }
+  .form__group {
+    width: 50%;
   }
 }

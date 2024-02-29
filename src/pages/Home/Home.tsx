@@ -98,13 +98,14 @@ const Home = () => {
         {products?.length
           ? products.map((product) => {
               return (
-                <CardItem
-                  key={product.id}
-                  brand={product.brand}
-                  id={product.id}
-                  price={product.price}
-                  product={product.product}
-                />
+                <div className={cl.cardWrapper} key={product.id}>
+                  <CardItem
+                    brand={product.brand}
+                    id={product.id}
+                    price={product.price}
+                    product={product.product}
+                  />
+                </div>
               );
             })
           : ""}
