@@ -45,8 +45,18 @@
   background-color: rgb(229, 229, 229);
 }
 
+@media screen and (max-width: 992px) {
+  .homeProducts {
+    grid-template-columns: repeat(auto-fill, 240px);
+    justify-content: space-around;
+
+    /* display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around; */
+  }
+}
 @media screen and (max-width: 576px) {
   .homeProducts {
-    flex-direction: column;
+    width: 200px;
   }
 }

@@ -90,14 +90,18 @@ const Home = () => {
             })
           : ""}
       </div>
-      <div className={cl.homePagination}>
-        <button onClick={prevPage} disabled={offset === 0}>
-          <SlArrowLeftCircle size="lg" />
-        </button>
-        <button onClick={nextPage}>
-          <SlArrowRightCircle size="lg" />
-        </button>
-      </div>
+      {products?.length ? (
+        <div className={cl.homePagination}>
+          <button onClick={prevPage} disabled={offset === 0}>
+            <SlArrowLeftCircle style={{ height: "100%", width: "100%" }} />
+          </button>
+          <button onClick={nextPage}>
+            <SlArrowRightCircle style={{ height: "100%", width: "100%" }} />
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
