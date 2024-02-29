@@ -12,5 +12,6 @@ export interface IReqData {
     limit?: number;
     price?: number;
     ids?: string[];
+    brand?: string;
   };
 }
