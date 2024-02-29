@@ -60,5 +60,9 @@
 @media screen and (max-width: 576px) {
   .card {
     width: 100%;
+    height: 200px;
+  }
+  .cardBody {
+    margin-top: 0;
   }
 }

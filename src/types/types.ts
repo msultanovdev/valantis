@@ -13,5 +13,12 @@ export interface IReqData {
     price?: number;
     ids?: string[];
     brand?: string;
+    field?: string;
+    product?: string;
   };
 }
+
+export type filterComponentProps = {
+  type: string;
+  value: string | number;
+};
