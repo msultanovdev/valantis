@@ -5,6 +5,7 @@ import CardItem from "../../components/Card/Card";
 import cl from "./Home.module.css";
 import { RotatingLines } from "react-loader-spinner";
 import { SlArrowRightCircle, SlArrowLeftCircle } from "react-icons/sl";
+import { BsSearch } from "react-icons/bs";
 
 const Home = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -62,6 +63,24 @@ const Home = () => {
 
   return (
     <div className={cl.home}>
+      <div className={cl.homeSearch}>
+        <div className={[cl.form__group, cl.field].join(" ")}>
+          <input
+            type="input"
+            className={cl.form__field}
+            placeholder="Поиск..."
+            name="search"
+            id="search"
+            required
+          />
+          <label htmlFor="search" className={cl.form__label}>
+            Поиск...
+          </label>
+        </div>
+        <button>
+          <BsSearch />
+        </button>
+      </div>
       <div className={cl.homeProducts}>
         {products?.length === 0 && !isLoading && "Ничего не найдено :("}
         {isLoading && (
