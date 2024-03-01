@@ -120,7 +120,13 @@
 .form__field:invalid {
   box-shadow: none;
 }
-
+.removeFilterBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgb(122, 122, 255);
+  transition: all 0.3s;
+}
 @media screen and (max-width: 992px) {
   .homeProducts {
     grid-template-columns: repeat(auto-fill, 240px);
@@ -148,6 +154,9 @@
 @media (hover: hover) {
   .homeSearch button:hover {
     background-color: rgb(229, 229, 229);
+  }
+  .removeFilterBtn:hover {
+    color: rgb(70, 70, 255);
   }
   .homePagination button:hover {
     border-radius: 50%;

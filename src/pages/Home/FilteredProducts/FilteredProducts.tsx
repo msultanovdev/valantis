@@ -92,7 +92,12 @@ const FilteredProducts: FC<filterComponentProps> = ({
         {products?.length === 0 && !isLoading && (
           <div className={"homeNothingFound"}>
             {"Ничего не найдено :("}{" "}
-            <button onClick={() => setSeacrhValue("")}>Сбросить фильтр</button>
+            <button
+              onClick={() => setSeacrhValue("")}
+              className="removeFilterBtn"
+            >
+              Сбросить фильтр
+            </button>
           </div>
         )}
         {isLoading && <CardSkeleton cards={12} />}
