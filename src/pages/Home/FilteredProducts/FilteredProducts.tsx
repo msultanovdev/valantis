@@ -4,6 +4,7 @@ import { RotatingLines } from "react-loader-spinner";
 import { fetchData } from "../../../api/http";
 import Card from "../../../components/Card/Card";
 import { IProduct, IReqData, filterComponentProps } from "../../../types/types";
+import CardSkeleton from "../../../components/Card/CardSkeleton/CardSkeleton";
 
 const FilteredProducts: FC<filterComponentProps> = ({ type, value }) => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -85,19 +86,8 @@ const FilteredProducts: FC<filterComponentProps> = ({ type, value }) => {
         {products?.length === 0 && !isLoading && (
           <div className={"homeNothingFound"}>{"Ничего не найдено :("}</div>
         )}
-        {isLoading && (
-          <div className={"spinner"}>
-            <RotatingLines
-              visible={isLoading}
-              strokeColor="white"
-              width="96"
-              strokeWidth="5"
-              animationDuration="0.75"
-              ariaLabel="rotating-lines-loading"
-            />
-          </div>
-        )}
-        {products?.length
+        {isLoading && <CardSkeleton cards={12} />}
+        {products?.length && !isLoading
           ? products.map((product) => {
               return (
                 <div className={"cardWrapper"} key={product.id}>
