@@ -1,10 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 import "./CardSkeleton.css";
-import { useRef } from "react";
-
 const CardSkeleton = ({ cards }: { cards: number }) => {
-  const windowSize = useRef(window.innerWidth);
-
   return (
     <>
       {Array(cards)

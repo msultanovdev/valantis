@@ -1,22 +1,29 @@
 import { useState, useEffect, FC } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { RotatingLines } from "react-loader-spinner";
 import { fetchData } from "../../../api/http";
 import Card from "../../../components/Card/Card";
-import { IProduct, IReqData, filterComponentProps } from "../../../types/types";
+import { IProduct, IReqData } from "../../../types/types";
 import CardSkeleton from "../../../components/Card/CardSkeleton/CardSkeleton";
 
-const FilteredProducts: FC<filterComponentProps> = ({ type, value }) => {
+type filterComponentProps = {
+  type: string;
+  value: string | number;
+  setSeacrhValue: (a: string) => void;
+};
+const FilteredProducts: FC<filterComponentProps> = ({
+  type,
+  value,
+  setSeacrhValue,
+}) => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [ids, setIds] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [offset, setOffset] = useState(0);
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
 
   const fetchItems = async (reqBody: IReqData) => {
     try {
-      setIsLoading(true);
       const data: IProduct[] = await fetchData(reqBody);
       if (data?.length) {
         const uniqueProducts = data?.filter(
@@ -37,23 +44,24 @@ const FilteredProducts: FC<filterComponentProps> = ({ type, value }) => {
     const params = {};
     if (type) {
       Object.defineProperty(params, `${type}`, {
-        value: Number(value) ? Number(value) : value,
+        value: Number(value) ? Number(value) : value.toString().toLowerCase(),
         enumerable: true,
       });
     }
     fetchFilteredData({ action: "filter", params });
     setOffset(0);
-  }, [value]);
+  }, [value, type]);
 
   useEffect(() => {
-    if (ids?.length) {
-      fetchItems({ action: "get_items", params: { ids: ids } });
-    }
+    fetchItems({ action: "get_items", params: { ids: ids } });
   }, [ids]);
 
   const fetchFilteredData = async (reqBody: IReqData) => {
     try {
+      setIsLoading(true);
       const data = await fetchData(reqBody);
+      console.log(data);
+
       setIds(data);
     } catch (e) {
       console.log(e);
@@ -74,8 +82,6 @@ const FilteredProducts: FC<filterComponentProps> = ({ type, value }) => {
 
   useEffect(() => {
     if (allProducts?.length) {
-      console.log(totalCount - offset);
-
       setProducts(allProducts.slice(offset, offset + 50));
     }
   }, [offset, allProducts]);
@@ -84,7 +90,10 @@ const FilteredProducts: FC<filterComponentProps> = ({ type, value }) => {
     <div>
       <div className={"homeProducts"}>
         {products?.length === 0 && !isLoading && (
-          <div className={"homeNothingFound"}>{"Ничего не найдено :("}</div>
+          <div className={"homeNothingFound"}>
+            {"Ничего не найдено :("}{" "}
+            <button onClick={() => setSeacrhValue("")}>Сбросить фильтр</button>
+          </div>
         )}
         {isLoading && <CardSkeleton cards={12} />}
         {products?.length && !isLoading

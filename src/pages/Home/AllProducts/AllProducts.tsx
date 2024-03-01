@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { RotatingLines } from "react-loader-spinner";
 import { fetchData } from "../../../api/http";
 import { IProduct, IReqData } from "../../../types/types";
 import Card from "../../../components/Card/Card";
@@ -9,11 +8,12 @@ import CardSkeleton from "../../../components/Card/CardSkeleton/CardSkeleton";
 const AllProducts = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [ids, setIds] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [offset, setOffset] = useState(0);
 
   const fetchIds = async (reqBody: IReqData) => {
     try {
+      setIsLoading(true);
       const data = await fetchData(reqBody);
       setIds(data);
     } catch (e) {
@@ -23,7 +23,6 @@ const AllProducts = () => {
 
   const fetchItems = async (reqBody: IReqData) => {
     try {
-      setIsLoading(true);
       const data: IProduct[] = await fetchData(reqBody);
       if (data?.length) {
         const uniqueProducts = data?.filter(

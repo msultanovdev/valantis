@@ -17,8 +17,3 @@ export interface IReqData {
     product?: string;
   };
 }
-
-export type filterComponentProps = {
-  type: string;
-  value: string | number;
-};
