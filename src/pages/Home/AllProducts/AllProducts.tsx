@@ -65,18 +65,6 @@ const AllProducts = () => {
         {products?.length === 0 && !isLoading && (
           <div className={"homeNothingFound"}>{"Ничего не найдено :("}</div>
         )}
-        {/* {isLoading && (
-          <div className={"spinner"}>
-            <RotatingLines
-              visible={isLoading}
-              strokeColor="white"
-              width="96"
-              strokeWidth="5"
-              animationDuration="0.75"
-              ariaLabel="rotating-lines-loading"
-            />
-          </div>
-        )} */}
         {isLoading && <CardSkeleton cards={12} />}
         {products?.length && !isLoading
           ? products.map((product) => {
